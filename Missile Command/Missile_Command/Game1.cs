@@ -22,9 +22,9 @@ namespace Missile_Command
         List<Missile> enemyMissileList;
         List<Missile> ourMissileList;
 
-        Silo oneSilo;
-        Silo twoSilo;
-        Silo threeSilo;
+        Silo one;
+        Silo two;
+        Silo three;
 
 
         Texture2D airPlaneText;
@@ -65,9 +65,9 @@ namespace Missile_Command
             //one = new Silo(Rectangle);
             //one.ammo = List<Rectangle>
             groundRect = new Rectangle(-4, 650, graphics.PreferredBackBufferWidth + 8, 150);
-            oneSilo = new Silo(new Rectangle(100, 700, 100, 150));
-            twoSilo = new Silo(new Rectangle(530, 715, 100, 150));
-            threeSilo = new Silo(new Rectangle(900, 710, 100, 150));
+            silo1Rect = new Rectangle(100, 700, 100, 150);
+            silo2Rect = new Rectangle(530, 715, 100, 150);
+            silo3Rect = new Rectangle(900, 710, 100, 150);
 
             cityRectArray = new Rectangle[] { new Rectangle(200, 700, 75, 50), new Rectangle(310, 705, 75, 50), new Rectangle(430, 710, 75, 50),
                 new Rectangle(655, 700, 75, 50), new Rectangle(740, 695, 75, 50), new Rectangle(825, 685, 75, 50), };
@@ -138,23 +138,9 @@ namespace Missile_Command
             //Background
             spriteBatch.Draw(ground1Text, groundRect, Color.White);
             //Silos
-            spriteBatch.Draw(ground2Text, oneSilo.rect, null, Color.White, 0, new Vector2(ground2Text.Width / 2, ground2Text.Height / 2), SpriteEffects.None, 0);
-            spriteBatch.Draw(ground2Text, twoSilo.rect, null, Color.White, 0, new Vector2(ground2Text.Width / 2, ground2Text.Height / 2), SpriteEffects.None, 0);
-            spriteBatch.Draw(ground2Text, threeSilo.rect, null, Color.White, 0, new Vector2(ground2Text.Width / 2, ground2Text.Height / 2), SpriteEffects.None, 0);
-            //ammo
-            for(int i = 0; i < oneSilo.ammo.Count; i++)
-            {
-                spriteBatch.Draw(ammoText, oneSilo.ammo[i], null, Color.White, 0, new Vector2(ammoText.Width / 2, ammoText.Height / 2), SpriteEffects.None, 0);
-            }
-            for (int i = 0; i < twoSilo.ammo.Count; i++)
-            {
-                spriteBatch.Draw(ammoText, twoSilo.ammo[i], null, Color.White, 0, new Vector2(ammoText.Width / 2, ammoText.Height / 2), SpriteEffects.None, 0);
-            }
-            for (int i = 0; i < threeSilo.ammo.Count; i++)
-            {
-                spriteBatch.Draw(ammoText, threeSilo.ammo[i], null, Color.White, 0, new Vector2(ammoText.Width / 2, ammoText.Height / 2), SpriteEffects.None, 0);
-            }
-
+            spriteBatch.Draw(ground2Text, silo1Rect, null, Color.White, 0, new Vector2(ground2Text.Width / 2, ground2Text.Height / 2), SpriteEffects.None, 0);
+            spriteBatch.Draw(ground2Text, silo2Rect, null, Color.White, 0, new Vector2(ground2Text.Width / 2, ground2Text.Height / 2), SpriteEffects.None, 0);
+            spriteBatch.Draw(ground2Text, silo3Rect, null, Color.White, 0, new Vector2(ground2Text.Width / 2, ground2Text.Height / 2), SpriteEffects.None, 0);
             //Cities
             spriteBatch.Draw(cityText, cityRectArray[0], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
             spriteBatch.Draw(cityText, cityRectArray[1], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
