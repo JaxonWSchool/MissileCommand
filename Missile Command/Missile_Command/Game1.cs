@@ -16,15 +16,41 @@ namespace Missile_Command
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-        GraphicsDeviceManager graphics;
+        GGraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Texture2D ammo, circle;
-        Rectangle target;
-        Missile missile;
+
+        List<Missile> enemyMissileList;
+        List<Missile> ourMissileList;
+
+        Silo one;
+        Silo two;
+        Silo three;
+
+
+        Texture2D airPlaneText;
+        Texture2D ammoText;
+        Texture2D circleText;
+        Texture2D cityText;
+        Texture2D ground1Text;
+        Texture2D ground2Text;
+        Texture2D lowText;
+        Texture2D outText;
+        Texture2D targettingCrossText;
+        Texture2D ufoText;
+
+        Rectangle airplaneRect, circleRect, cityRect, groundRect,
+            silo1Rect, silo2Rect, silo3Rect, lowRect, targettingCrossRect, outRect, ufoRect;
+
+        Rectangle[] cityRectArray;
+
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            Content.RootDirectory = "Content";
+            graphics.PreferredBackBufferWidth = 1000;
+            graphics.PreferredBackBufferHeight = 800;
+            graphics.ApplyChanges();
             Content.RootDirectory = "Content";
         }
 
@@ -38,7 +64,17 @@ namespace Missile_Command
         {
             // TODO: Add your initialization logic here
             
-            target = new Rectangle(300, 400, 80, 80);
+            IsMouseVisible = true;
+            //one = new Silo(Rectangle);
+            //one.ammo = List<Rectangle>
+            groundRect = new Rectangle(-4, 650, graphics.PreferredBackBufferWidth + 8, 150);
+            silo1Rect = new Rectangle(100, 700, 100, 150);
+            silo2Rect = new Rectangle(530, 715, 100, 150);
+            silo3Rect = new Rectangle(900, 710, 100, 150);
+
+            cityRectArray = new Rectangle[] { new Rectangle(200, 700, 75, 50), new Rectangle(310, 705, 75, 50), new Rectangle(430, 710, 75, 50),
+                new Rectangle(655, 700, 75, 50), new Rectangle(740, 695, 75, 50), new Rectangle(825, 685, 75, 50), };
+
             base.Initialize();
         }
 
@@ -50,9 +86,16 @@ namespace Missile_Command
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            ammo = this.Content.Load<Texture2D>("ammo");
-            circle = this.Content.Load<Texture2D>("circle");
-            missile = new Missile(new Rectangle(50, 100, 30, 60), ammo, 5, new Vector2(target.X, target.Y));
+            airPlaneText = Content.Load<Texture2D>("airplane");
+            ammoText = Content.Load<Texture2D>("ammo");
+            circleText = Content.Load<Texture2D>("circle");
+            cityText = Content.Load<Texture2D>("city");
+            ground1Text = Content.Load<Texture2D>("groundTexture1");
+            ground2Text = Content.Load<Texture2D>("groundTexture2");
+            lowText = Content.Load<Texture2D>("Low");
+            targettingCrossText = Content.Load<Texture2D>("newTargettingCross");
+            outText = Content.Load<Texture2D>("out");
+            ufoText = Content.Load<Texture2D>("ufo");
             // TODO: use this.Content to load your game content here
         }
 
@@ -90,11 +133,36 @@ namespace Missile_Command
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            GraphicsDevice.Clear(Color.Black);
+
+            // TODO: Add your drawing code here
             spriteBatch.Begin();
-            spriteBatch.Draw(missile.texture, missile.rect, null, Color.White, (float)missile.rotation, new Vector2(missile.texture.Width / 2, missile.texture.Height/ 2), SpriteEffects.None, 0);
-            spriteBatch.Draw(circle, target, Color.White);
+            //Background
+            spriteBatch.Draw(ground1Text, groundRect, Color.White);
+            //Silos
+            spriteBatch.Draw(ground2Text, silo1Rect, null, Color.White, 0, new Vector2(ground2Text.Width / 2, ground2Text.Height / 2), SpriteEffects.None, 0);
+            spriteBatch.Draw(ground2Text, silo2Rect, null, Color.White, 0, new Vector2(ground2Text.Width / 2, ground2Text.Height / 2), SpriteEffects.None, 0);
+            spriteBatch.Draw(ground2Text, silo3Rect, null, Color.White, 0, new Vector2(ground2Text.Width / 2, ground2Text.Height / 2), SpriteEffects.None, 0);
+            //Cities
+            spriteBatch.Draw(cityText, cityRectArray[0], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
+            spriteBatch.Draw(cityText, cityRectArray[1], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
+            spriteBatch.Draw(cityText, cityRectArray[2], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
+            spriteBatch.Draw(cityText, cityRectArray[3], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
+            spriteBatch.Draw(cityText, cityRectArray[4], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
+            spriteBatch.Draw(cityText, cityRectArray[5], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
+
+
             spriteBatch.End();
             base.Draw(gameTime);
+        }
+         public Boolean isColliding(Rectangle rec1, Rectangle rec2) //probably change
+        {
+            if (rec2.X + rec2.Width >= rec1.X && !(rec2.X > rec1.X + rec1.Width))
+            {
+                if (rec2.Y + rec2.Height >= rec1.Y && !(rec2.Y > rec1.Y + rec1.Height))
+                    return true;
+            }
+            return false;
         }
     }
 }
