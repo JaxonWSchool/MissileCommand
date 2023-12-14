@@ -16,15 +16,16 @@ namespace Missile_Command
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-        GGraphicsDeviceManager graphics;
+        GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
         List<Missile> enemyMissileList;
         List<Missile> ourMissileList;
+        List<City> cityList; 
 
-        Silo one;
-        Silo two;
-        Silo three;
+        Silo oneSilo;
+        Silo twoSilo;
+        Silo threeSilo;
 
 
         Texture2D airPlaneText;
@@ -38,10 +39,8 @@ namespace Missile_Command
         Texture2D targettingCrossText;
         Texture2D ufoText;
 
-        Rectangle airplaneRect, circleRect, cityRect, groundRect,
-            silo1Rect, silo2Rect, silo3Rect, lowRect, targettingCrossRect, outRect, ufoRect;
-
-        Rectangle[] cityRectArray;
+        Rectangle airplaneRect, circleRect, groundRect,
+            lowRect, targettingCrossRect, outRect, ufoRect;
 
 
         public Game1()
@@ -51,7 +50,6 @@ namespace Missile_Command
             graphics.PreferredBackBufferWidth = 1000;
             graphics.PreferredBackBufferHeight = 800;
             graphics.ApplyChanges();
-            Content.RootDirectory = "Content";
         }
 
         /// <summary>
@@ -63,17 +61,22 @@ namespace Missile_Command
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            
             IsMouseVisible = true;
             //one = new Silo(Rectangle);
             //one.ammo = List<Rectangle>
             groundRect = new Rectangle(-4, 650, graphics.PreferredBackBufferWidth + 8, 150);
-            silo1Rect = new Rectangle(100, 700, 100, 150);
-            silo2Rect = new Rectangle(530, 715, 100, 150);
-            silo3Rect = new Rectangle(900, 710, 100, 150);
+            oneSilo = new Silo(new Rectangle(100, 700, 100, 150));
+            twoSilo = new Silo(new Rectangle(530, 715, 100, 150));
+            threeSilo = new Silo(new Rectangle(900, 710, 100, 150));
 
-            cityRectArray = new Rectangle[] { new Rectangle(200, 700, 75, 50), new Rectangle(310, 705, 75, 50), new Rectangle(430, 710, 75, 50),
-                new Rectangle(655, 700, 75, 50), new Rectangle(740, 695, 75, 50), new Rectangle(825, 685, 75, 50), };
+            cityList = new List<City>();
+
+            cityList.Add(new City(new Rectangle(200, 700, 75, 50)));
+            cityList.Add(new City(new Rectangle(310, 705, 75, 50)));
+            cityList.Add(new City(new Rectangle(430, 710, 75, 50)));
+            cityList.Add(new City(new Rectangle(655, 700, 75, 50)));
+            cityList.Add(new City(new Rectangle(740, 695, 75, 50)));
+            cityList.Add(new City(new Rectangle(825, 685, 75, 50)));
 
             base.Initialize();
         }
@@ -86,6 +89,8 @@ namespace Missile_Command
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            // TODO: use this.Content to load your game content here
             airPlaneText = Content.Load<Texture2D>("airplane");
             ammoText = Content.Load<Texture2D>("ammo");
             circleText = Content.Load<Texture2D>("circle");
@@ -96,7 +101,8 @@ namespace Missile_Command
             targettingCrossText = Content.Load<Texture2D>("newTargettingCross");
             outText = Content.Load<Texture2D>("out");
             ufoText = Content.Load<Texture2D>("ufo");
-            // TODO: use this.Content to load your game content here
+
+
         }
 
         /// <summary>
@@ -115,12 +121,13 @@ namespace Missile_Command
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            KeyboardState kb = Keyboard.GetState();
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || kb.IsKeyDown(Keys.Escape))
                 this.Exit();
 
             // TODO: Add your update logic here
-            missile.Update(gameTime);
+
             base.Update(gameTime);
         }
 
@@ -130,9 +137,6 @@ namespace Missile_Command
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
             GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
@@ -140,22 +144,37 @@ namespace Missile_Command
             //Background
             spriteBatch.Draw(ground1Text, groundRect, Color.White);
             //Silos
-            spriteBatch.Draw(ground2Text, silo1Rect, null, Color.White, 0, new Vector2(ground2Text.Width / 2, ground2Text.Height / 2), SpriteEffects.None, 0);
-            spriteBatch.Draw(ground2Text, silo2Rect, null, Color.White, 0, new Vector2(ground2Text.Width / 2, ground2Text.Height / 2), SpriteEffects.None, 0);
-            spriteBatch.Draw(ground2Text, silo3Rect, null, Color.White, 0, new Vector2(ground2Text.Width / 2, ground2Text.Height / 2), SpriteEffects.None, 0);
+            spriteBatch.Draw(ground2Text, oneSilo.rect, null, Color.White, 0, new Vector2(ground2Text.Width / 2, ground2Text.Height / 2), SpriteEffects.None, 0);
+            spriteBatch.Draw(ground2Text, twoSilo.rect, null, Color.White, 0, new Vector2(ground2Text.Width / 2, ground2Text.Height / 2), SpriteEffects.None, 0);
+            spriteBatch.Draw(ground2Text, threeSilo.rect, null, Color.White, 0, new Vector2(ground2Text.Width / 2, ground2Text.Height / 2), SpriteEffects.None, 0);
+            //ammo
+            for (int i = 0; i < oneSilo.ammo.Count; i++)
+            {
+                spriteBatch.Draw(ammoText, oneSilo.ammo[i], null, Color.White, 0, new Vector2(ammoText.Width / 2, ammoText.Height / 2), SpriteEffects.None, 0);
+            }
+            for (int i = 0; i < twoSilo.ammo.Count; i++)
+            {
+                spriteBatch.Draw(ammoText, twoSilo.ammo[i], null, Color.White, 0, new Vector2(ammoText.Width / 2, ammoText.Height / 2), SpriteEffects.None, 0);
+            }
+            for (int i = 0; i < threeSilo.ammo.Count; i++)
+            {
+                spriteBatch.Draw(ammoText, threeSilo.ammo[i], null, Color.White, 0, new Vector2(ammoText.Width / 2, ammoText.Height / 2), SpriteEffects.None, 0);
+            }
+
             //Cities
-            spriteBatch.Draw(cityText, cityRectArray[0], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
-            spriteBatch.Draw(cityText, cityRectArray[1], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
-            spriteBatch.Draw(cityText, cityRectArray[2], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
-            spriteBatch.Draw(cityText, cityRectArray[3], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
-            spriteBatch.Draw(cityText, cityRectArray[4], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
-            spriteBatch.Draw(cityText, cityRectArray[5], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
+            for (int x = 0; x < cityList.Count; x++)
+            {
+                if (!cityList[x].isHit)
+                    spriteBatch.Draw(cityText, cityList[x].rect, null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
+            }
 
 
             spriteBatch.End();
+
             base.Draw(gameTime);
         }
-         public Boolean isColliding(Rectangle rec1, Rectangle rec2) //probably change
+
+        public bool isColliding(Rectangle rec1, Rectangle rec2) //probably change
         {
             if (rec2.X + rec2.Width >= rec1.X && !(rec2.X > rec1.X + rec1.Width))
             {
@@ -164,5 +183,7 @@ namespace Missile_Command
             }
             return false;
         }
+
     }
+    public enum GameState { startScreen, playing, betweenRounds, lost }
 }
