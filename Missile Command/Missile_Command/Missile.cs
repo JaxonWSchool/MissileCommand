@@ -21,6 +21,10 @@ namespace Missile_Command
         public Texture2D texture;
         public Vector2 target;
         public double timeToHit;
+        public bool isEnemyMissile;
+        public int ageInFrames;
+
+        public Boolean exploded;
 
         //Rise and run are the amount x and amount y that the missile is incremented each update to hit its target
         double rise, run;
@@ -35,6 +39,7 @@ namespace Missile_Command
             //Find the x and y distances from the starting rectangle point to the target
             double distanceX = (int)target.X - rect.X;
             double distanceY = (int)target.Y - rect.Y;
+            this.isEnemyMissile = isEnemyMissile;
 
             texture = tex;
             timeToHit = time * 60;
@@ -51,10 +56,31 @@ namespace Missile_Command
 
         public void Update(GameTime gameTime)
         {
-            doubleRectX += run;
-            doubleRectY += rise;
-            rect.X = (int)doubleRectX;
-            rect.Y = (int)doubleRectY;
+            if (isEnemyMissile)
+            {
+                doubleRectX += run;
+                doubleRectY += rise;
+                rect.X = (int)doubleRectX;
+                rect.Y = (int)doubleRectY;
+            }
+            else
+            {
+                doubleRectX += run;
+                doubleRectY -= rise;
+                rect.X = (int)doubleRectX;
+                rect.Y = (int)doubleRectY;
+            }
+            ageInFrames++;
+        }
+
+        public void explode()
+        {
+            exploded = true;
+        }
+
+        public void draw(GameTime gameTime, GraphicsDevice graphicsDevice)
+        {
+
         }
     }
 }

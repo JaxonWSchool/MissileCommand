@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\178492\Desktop\Missile Command\Missile Command hadent\Missile Command\Missile_Command\bin\x86\Debug\Content\ammo.xnb</Output>
-      <Time>2023-12-08T11:40:39.2211152-06:00</Time>
+      <Output>C:\Users\178492\Desktop\Missile Command\Day 3\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Content\ammo.xnb</Output>
+      <Time>2023-12-12T10:52:35.5921674-06:00</Time>
     </Item>
     <Item>
       <Source>circle.png</Source>
@@ -16,8 +16,98 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\178492\Desktop\Missile Command\Missile Command hadent\Missile Command\Missile_Command\bin\x86\Debug\Content\circle.xnb</Output>
-      <Time>2023-12-08T11:42:38.2644227-06:00</Time>
+      <Output>C:\Users\178492\Desktop\Missile Command\Day 3\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Content\circle.xnb</Output>
+      <Time>2023-12-12T10:52:35.6123634-06:00</Time>
+    </Item>
+    <Item>
+      <Source>airplane.png</Source>
+      <Name>airplane</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\178492\Desktop\Missile Command\Day 3\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Content\airplane.xnb</Output>
+      <Time>2023-12-12T10:52:35.5721184-06:00</Time>
+    </Item>
+    <Item>
+      <Source>city.png</Source>
+      <Name>city</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\178492\Desktop\Missile Command\Day 3\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Content\city.xnb</Output>
+      <Time>2023-12-12T10:52:35.632479-06:00</Time>
+    </Item>
+    <Item>
+      <Source>groundTexture1.png</Source>
+      <Name>groundTexture1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\178492\Desktop\Missile Command\Day 3\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Content\groundTexture1.xnb</Output>
+      <Time>2023-12-12T10:52:35.6525618-06:00</Time>
+    </Item>
+    <Item>
+      <Source>groundTexture2.png</Source>
+      <Name>groundTexture2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\178492\Desktop\Missile Command\Day 3\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Content\groundTexture2.xnb</Output>
+      <Time>2023-12-12T10:52:35.6727294-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Low.png</Source>
+      <Name>Low</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\178492\Desktop\Missile Command\Day 3\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Content\Low.xnb</Output>
+      <Time>2023-12-12T10:52:35.5319861-06:00</Time>
+    </Item>
+    <Item>
+      <Source>newTargettingCross.png</Source>
+      <Name>newTargettingCross</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\178492\Desktop\Missile Command\Day 3\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Content\newTargettingCross.xnb</Output>
+      <Time>2023-12-12T10:52:35.6929841-06:00</Time>
+    </Item>
+    <Item>
+      <Source>out.png</Source>
+      <Name>out</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\178492\Desktop\Missile Command\Day 3\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Content\out.xnb</Output>
+      <Time>2023-12-12T10:52:35.7231247-06:00</Time>
+    </Item>
+    <Item>
+      <Source>ufo.png</Source>
+      <Name>ufo</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\178492\Desktop\Missile Command\Day 3\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Content\ufo.xnb</Output>
+      <Time>2023-12-12T10:52:35.7388267-06:00</Time>
+    </Item>
+    <Item>
+      <Source>lostScreen.png</Source>
+      <Name>lostScreen</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\178492\Desktop\Missile Command\Day 3\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Content\lostScreen.xnb</Output>
+      <Time>2023-12-12T11:27:11.7711447-06:00</Time>
+    </Item>
+    <Item>
+      <Source>startScreen.png</Source>
+      <Name>startScreen</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\178492\Desktop\Missile Command\Day 3\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Content\startScreen.xnb</Output>
+      <Time>2023-12-12T11:34:08.3287486-06:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -26,10 +116,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\178492\Desktop\Missile Command\Missile Command hadent\Missile Command\Missile_CommandContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\178492\Desktop\Missile Command\Missile Command hadent\Missile Command\Missile_Command\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\178492\Desktop\Missile Command\Missile Command hadent\Missile Command\Missile_Command\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\178492\Desktop\Missile Command\Missile Command hadent\Missile Command\Missile_Command\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\178492\Desktop\Missile Command\Day 3\MissileCommand-main\Missile Command\Missile_CommandContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\178492\Desktop\Missile Command\Day 3\MissileCommand-main\Missile Command\Missile_Command\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\178492\Desktop\Missile Command\Day 3\MissileCommand-main\Missile Command\Missile_Command\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\178492\Desktop\Missile Command\Day 3\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
