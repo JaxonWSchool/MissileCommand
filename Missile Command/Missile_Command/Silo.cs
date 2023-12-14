@@ -1,7 +1,13 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.GamerServices;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Missile_Command
 {
@@ -10,6 +16,7 @@ namespace Missile_Command
         public Rectangle rect;
         public Missile missile;
         public List<Rectangle> ammo;
+        public Boolean isDead;
         public Silo(Rectangle rect)
         {
             this.rect = rect;
@@ -32,6 +39,8 @@ namespace Missile_Command
             ammo.Add(new Rectangle(rect.X - width * 1 / 2, rect.Y + height * 3, width, height));
             ammo.Add(new Rectangle(rect.X + width * 1 / 2, rect.Y + height * 3, width, height));
             ammo.Add(new Rectangle(rect.X + width * 3 / 2, rect.Y + height * 3, width, height));
+
+            isDead = false;
         }
 
     }

@@ -16,15 +16,15 @@ namespace Missile_Command
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-        GGraphicsDeviceManager graphics;
+        GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
         List<Missile> enemyMissileList;
         List<Missile> ourMissileList;
 
-        Silo one;
-        Silo two;
-        Silo three;
+        Silo oneSilo;
+        Silo twoSilo;
+        Silo threeSilo;
 
 
         Texture2D airPlaneText;
@@ -37,12 +37,18 @@ namespace Missile_Command
         Texture2D outText;
         Texture2D targettingCrossText;
         Texture2D ufoText;
+        Texture2D startScreen, endScreen;
 
         Rectangle airplaneRect, circleRect, cityRect, groundRect,
-            silo1Rect, silo2Rect, silo3Rect, lowRect, targettingCrossRect, outRect, ufoRect;
+            lowRect, targettingCrossRect, outRect, ufoRect;
 
         Rectangle[] cityRectArray;
 
+        GameState gameState;
+
+        Round round;
+
+        KeyboardState kb, oldKb;
 
         public Game1()
         {
@@ -68,12 +74,14 @@ namespace Missile_Command
             //one = new Silo(Rectangle);
             //one.ammo = List<Rectangle>
             groundRect = new Rectangle(-4, 650, graphics.PreferredBackBufferWidth + 8, 150);
-            silo1Rect = new Rectangle(100, 700, 100, 150);
-            silo2Rect = new Rectangle(530, 715, 100, 150);
-            silo3Rect = new Rectangle(900, 710, 100, 150);
+            oneSilo = new Silo(new Rectangle(100, 700, 100, 150));
+            twoSilo = new Silo(new Rectangle(530, 715, 100, 150));
+            threeSilo = new Silo(new Rectangle(900, 710, 100, 150));
 
             cityRectArray = new Rectangle[] { new Rectangle(200, 700, 75, 50), new Rectangle(310, 705, 75, 50), new Rectangle(430, 710, 75, 50),
                 new Rectangle(655, 700, 75, 50), new Rectangle(740, 695, 75, 50), new Rectangle(825, 685, 75, 50), };
+
+            gameState = GameState.startScreen;
 
             base.Initialize();
         }
@@ -96,6 +104,8 @@ namespace Missile_Command
             targettingCrossText = Content.Load<Texture2D>("newTargettingCross");
             outText = Content.Load<Texture2D>("out");
             ufoText = Content.Load<Texture2D>("ufo");
+            startScreen = Content.Load<Texture2D>("startScreen");
+            endScreen = Content.Load<Texture2D>("lostScreen");
             // TODO: use this.Content to load your game content here
         }
 
@@ -115,12 +125,20 @@ namespace Missile_Command
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            kb = Keyboard.GetState();
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || kb.IsKeyDown(Keys.Escape))
                 this.Exit();
 
             // TODO: Add your update logic here
-            missile.Update(gameTime);
+            if(gameState == GameState.startScreen && kb.IsKeyDown(Keys.Space))
+            {
+                gameState = GameState.playing;
+            }
+
+            //Add check for round being over to change game state
+
+            oldKb = kb;
             base.Update(gameTime);
         }
 
@@ -139,17 +157,42 @@ namespace Missile_Command
             spriteBatch.Begin();
             //Background
             spriteBatch.Draw(ground1Text, groundRect, Color.White);
-            //Silos
-            spriteBatch.Draw(ground2Text, silo1Rect, null, Color.White, 0, new Vector2(ground2Text.Width / 2, ground2Text.Height / 2), SpriteEffects.None, 0);
-            spriteBatch.Draw(ground2Text, silo2Rect, null, Color.White, 0, new Vector2(ground2Text.Width / 2, ground2Text.Height / 2), SpriteEffects.None, 0);
-            spriteBatch.Draw(ground2Text, silo3Rect, null, Color.White, 0, new Vector2(ground2Text.Width / 2, ground2Text.Height / 2), SpriteEffects.None, 0);
-            //Cities
-            spriteBatch.Draw(cityText, cityRectArray[0], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
-            spriteBatch.Draw(cityText, cityRectArray[1], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
-            spriteBatch.Draw(cityText, cityRectArray[2], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
-            spriteBatch.Draw(cityText, cityRectArray[3], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
-            spriteBatch.Draw(cityText, cityRectArray[4], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
-            spriteBatch.Draw(cityText, cityRectArray[5], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
+
+            if(gameState == GameState.startScreen)
+            {
+                spriteBatch.Draw(startScreen, new Rectangle(0, 0, 1000, 800), Color.White);
+            }
+            if(gameState == GameState.playing)
+            {
+                //Silos
+                spriteBatch.Draw(ground2Text, oneSilo.rect, null, Color.White, 0, new Vector2(ground2Text.Width / 2, ground2Text.Height / 2), SpriteEffects.None, 0);
+                spriteBatch.Draw(ground2Text, twoSilo.rect, null, Color.White, 0, new Vector2(ground2Text.Width / 2, ground2Text.Height / 2), SpriteEffects.None, 0);
+                spriteBatch.Draw(ground2Text, threeSilo.rect, null, Color.White, 0, new Vector2(ground2Text.Width / 2, ground2Text.Height / 2), SpriteEffects.None, 0);
+                //Ammo
+                for (int i = 0; i < oneSilo.ammo.Count; i++)
+                {
+                    spriteBatch.Draw(ammoText, oneSilo.ammo[i], null, Color.White, 0, new Vector2(ammoText.Width / 2, ammoText.Height / 2), SpriteEffects.None, 0);
+                }
+                for (int i = 0; i < twoSilo.ammo.Count; i++)
+                {
+                    spriteBatch.Draw(ammoText, twoSilo.ammo[i], null, Color.White, 0, new Vector2(ammoText.Width / 2, ammoText.Height / 2), SpriteEffects.None, 0);
+                }
+                for (int i = 0; i < threeSilo.ammo.Count; i++)
+                {
+                    spriteBatch.Draw(ammoText, threeSilo.ammo[i], null, Color.White, 0, new Vector2(ammoText.Width / 2, ammoText.Height / 2), SpriteEffects.None, 0);
+                }
+                //Cities
+                spriteBatch.Draw(cityText, cityRectArray[0], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
+                spriteBatch.Draw(cityText, cityRectArray[1], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
+                spriteBatch.Draw(cityText, cityRectArray[2], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
+                spriteBatch.Draw(cityText, cityRectArray[3], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
+                spriteBatch.Draw(cityText, cityRectArray[4], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
+                spriteBatch.Draw(cityText, cityRectArray[5], null, Color.White, 0, new Vector2(cityText.Width / 2, cityText.Height / 2), SpriteEffects.None, 0);
+            }
+            if(gameState == GameState.lost)
+            {
+                spriteBatch.Draw(endScreen, new Rectangle(0, 0, 1000, 800), Color.White);
+            }
 
 
             spriteBatch.End();
@@ -163,6 +206,14 @@ namespace Missile_Command
                     return true;
             }
             return false;
+        }
+
+        public enum GameState
+        {
+            startScreen,
+            playing,
+            betweenRounds,
+            lost
         }
     }
 }
