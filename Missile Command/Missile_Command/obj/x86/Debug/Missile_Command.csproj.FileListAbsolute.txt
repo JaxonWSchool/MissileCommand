@@ -18,3 +18,24 @@ C:\Users\178492\Desktop\Missile Command\Missile Command hadent\Missile Command\M
 C:\Users\178492\Desktop\Missile Command\Missile Command hadent\Missile Command\Missile_Command\obj\x86\Debug\Missile_Command.csproj.CopyComplete
 C:\Users\178492\Desktop\Missile Command\Missile Command hadent\Missile Command\Missile_Command\obj\x86\Debug\Missile_Command.exe
 C:\Users\178492\Desktop\Missile Command\Missile Command hadent\Missile Command\Missile_Command\obj\x86\Debug\Missile_Command.pdb
+C:\Users\174587\Downloads\MissileCommand-main\MissileCommand-main\Missile Command\Missile_Command\obj\x86\Debug\Missile_Command.csproj.AssemblyReference.cache
+C:\Users\174587\Downloads\MissileCommand-main\MissileCommand-main\Missile Command\Missile_Command\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\174587\Downloads\MissileCommand-main\MissileCommand-main\Missile Command\Missile_Command\obj\x86\Debug\Missile_Command.csproj.CoreCompileInputs.cache
+C:\Users\174587\Downloads\MissileCommand-main\MissileCommand-main\Missile Command\Missile_Command\obj\x86\Debug\Missile_Command.exe
+C:\Users\174587\Downloads\MissileCommand-main\MissileCommand-main\Missile Command\Missile_Command\obj\x86\Debug\Missile_Command.pdb
+C:\Users\174587\Downloads\MissileCommand-main\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Content\ammo.xnb
+C:\Users\174587\Downloads\MissileCommand-main\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Content\circle.xnb
+C:\Users\174587\Downloads\MissileCommand-main\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Missile_Command.exe
+C:\Users\174587\Downloads\MissileCommand-main\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Missile_Command.pdb
+C:\Users\174587\Downloads\MissileCommand-main\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Microsoft.Xna.Framework.dll
+C:\Users\174587\Downloads\MissileCommand-main\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Microsoft.Xna.Framework.Game.dll
+C:\Users\174587\Downloads\MissileCommand-main\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.dll
+C:\Users\174587\Downloads\MissileCommand-main\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.dll
+C:\Users\174587\Downloads\MissileCommand-main\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.dll
+C:\Users\174587\Downloads\MissileCommand-main\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Microsoft.Xna.Framework.xml
+C:\Users\174587\Downloads\MissileCommand-main\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Microsoft.Xna.Framework.Game.xml
+C:\Users\174587\Downloads\MissileCommand-main\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.xml
+C:\Users\174587\Downloads\MissileCommand-main\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.xml
+C:\Users\174587\Downloads\MissileCommand-main\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.xml
+C:\Users\174587\Downloads\MissileCommand-main\MissileCommand-main\Missile Command\Missile_Command\obj\x86\Debug\Missile_Command.csproj.CopyComplete
+C:\Users\174587\Downloads\MissileCommand-main\MissileCommand-main\Missile Command\Missile_Command\bin\x86\Debug\Content\white.xnb

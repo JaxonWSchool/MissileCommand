@@ -1,2 +1,4 @@
 C:\Users\178492\Desktop\Missile Command\Missile Command hadent\Missile Command\Missile_CommandContent\obj\x86\Debug\Missile_CommandContent.contentproj.AssemblyReference.cache
 C:\Users\178492\Desktop\Missile Command\Missile Command hadent\Missile Command\Missile_CommandContent\obj\x86\Debug\Missile_CommandContent.contentproj.CoreCompileInputs.cache
+C:\Users\174587\Downloads\MissileCommand-main\MissileCommand-main\Missile Command\Missile_CommandContent\obj\x86\Debug\Missile_CommandContent.contentproj.AssemblyReference.cache
+C:\Users\174587\Downloads\MissileCommand-main\MissileCommand-main\Missile Command\Missile_CommandContent\obj\x86\Debug\Missile_CommandContent.contentproj.CoreCompileInputs.cache
